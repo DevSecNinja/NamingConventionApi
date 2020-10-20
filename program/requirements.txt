@@ -1,1 +1,11 @@
 fastapi
+uvicorn
+
+# Possible other requirements taken from https://github.com/windson/fastapi/blob/fastapi-postgresql-azure-deploy/main.py
+asyncpg
+click
+gunicorn
+h11
+psycopg2-binary
+starlette
+websockets
