@@ -50,7 +50,7 @@ def validateResourceType(resourceType: str):
     raise TypeError(resourceType)
 
 
-app = FastAPI()
+app = FastAPI(name="DevSecNinja Naming Convention API")
 
 
 @app.get("/")
