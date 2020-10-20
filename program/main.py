@@ -10,8 +10,9 @@ def getRegions():
         azure_regions_dict = azure_regions_temp
 
         # Return only physical regions
-        azure_regions_dict = [x for x in azure_regions_dict if x['metadata']
-                              ['regionType'] == 'Physical']
+        azure_regions_dict = [
+            x for x in azure_regions_dict if x["metadata"]["regionType"] == "Physical"
+        ]
 
         # Include short_code for region
         for d in azure_regions_dict:
@@ -29,7 +30,7 @@ def validateRegion(region: str):
     azureRegions = getRegions()
 
     for r in azureRegions:
-        if r['displayName'] == region:
+        if r["displayName"] == region:
             return r
         else:
             pass
@@ -38,9 +39,7 @@ def validateRegion(region: str):
 
 
 def validateResourceType(resourceType: str):
-    supportedResourceTypes = {
-        "Microsoft.Compute/virtualMachines": "VM"
-    }
+    supportedResourceTypes = {"Microsoft.Compute/virtualMachines": "VM"}
 
     for key in supportedResourceTypes:
         if key == resourceType:
@@ -56,15 +55,14 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    introText = "Welcome to the Azure Naming Convention API. Browse to /docs\
-        to see what you can do."
+    introText = "Welcome to the Azure Naming Convention API. Browse to /docs to see what you can do."
     return {"message": introText}
 
 
 @app.get("/get_name")
 async def get_name(resourceType: str, region: str):
     try:
-        environment = 'A'
+        environment = "A"
         regionDetails = validateRegion(region)
         resourceTypeDetails = validateResourceType(resourceType)
     except TypeError as e:
@@ -73,16 +71,16 @@ async def get_name(resourceType: str, region: str):
     name = environment + regionDetails["shortCode"] + resourceTypeDetails
 
     data = {
-        'environment': environment,
-        'region': regionDetails,
-        'resourceType': resourceTypeDetails
+        "environment": environment,
+        "region": regionDetails,
+        "resourceType": resourceTypeDetails,
     }
 
     naming = {
-        'name': name,
-        'nameUpperCase': name.upper(),
-        'nameLowerCase': name.lower(),
-        'data': data
+        "name": name,
+        "nameUpperCase": name.upper(),
+        "nameLowerCase": name.lower(),
+        "data": data,
     }
 
     return naming
