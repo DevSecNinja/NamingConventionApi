@@ -1,6 +1,14 @@
 # Azure Environment of DevSecNinja
 
-Welcome! This project contains an API that returns a resource name based on a naming convention
+Welcome! This project contains an API that returns a resource name based on a naming convention.
+
+# Instructions
+
+To run the Python script based on FastAPI locally, run the following:
+
+`` bash
+uvicorn main:app --reload
+``
 
 ## CI / CD Status - develop
 
