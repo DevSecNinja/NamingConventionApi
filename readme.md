@@ -10,6 +10,8 @@ To run the Python script based on FastAPI locally, run the following:
 uvicorn main:app --reload
 ``
 
+To view the automatically generated API documentation based on OpenAPI (formerly Swagger), go to `http://127.0.0.1:8000/docs`
+
 ## CI / CD Status - develop
 
 ### Linter (develop)
