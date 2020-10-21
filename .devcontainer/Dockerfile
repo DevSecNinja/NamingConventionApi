@@ -11,6 +11,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 # Installations
 ## General
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# hadolint ignore=DL3008
 RUN apt-get update -y \
     && export DEBIAN_FRONTEND=noninteractive \
 	&& apt-get -y install --no-install-recommends python3-setuptools \
@@ -24,3 +27,4 @@ RUN apt-get update -y \
 		gnupg \
 		software-properties-common \
 		wget
+	&& rm -rf /var/lib/apt/lists/*
